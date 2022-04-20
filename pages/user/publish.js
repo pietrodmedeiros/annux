@@ -20,6 +20,22 @@ const useStyles = makeStyles((theme) => ({
     box: {
         backgroundColor: theme.palette.background.white,
         padding: theme.spacing(3)
+    },
+    thumbsContainer: {
+        display: 'flex',
+        marginTop: 15
+    },
+    dropzone: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+        paddin: 10,
+        margin: '0 15px 15px 0',
+        width: 200,
+        height: 150,
+        background: theme.palette.background.default,
+        border: '2px dashed black'
     }
 }))
   
@@ -78,6 +94,13 @@ const Publish = () => {
                     <Typography component='div' variant='body2' color='textPrimary'>
                         A primeira imagem é a foto principal do anúncio
                     </Typography>
+                    <Box className={classes.thumbsContainer}>
+                        <Box className={classes.dropzone}>
+                            <Typography variant='body2' color='textPrimary'>
+                                Clique ou arraste para adicionar uma imagem
+                            </Typography>
+                        </Box>
+                    </Box>
                 </Box>
             </Container>
 
