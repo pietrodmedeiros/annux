@@ -4,13 +4,17 @@ import {
     Box,
     TextField,
     Select,
-    Button
+    Button,
+    IconButton
 } from '@material-ui/core'
 import TemplateDefault from '../../src/templates/Default'
 import { makeStyles } from '@material-ui/core/styles'
+import { DeleteForever } from '@material-ui/icons'
 
 
 const useStyles = makeStyles((theme) => ({
+    mask: {},
+    mainImage: {},
     container: {
         padding: theme.spacing(8, 0, 6)
       },
@@ -24,6 +28,36 @@ const useStyles = makeStyles((theme) => ({
     thumbsContainer: {
         display: 'flex',
         marginTop: 15
+    },
+    thumb: {
+        position: 'relative',
+        width: 200,
+        height: 150,
+        backgourdSize: 'cover',
+        backgroundPosition: 'center center',
+
+        '& $mainImage': {
+            backgroundColor: 'blue',
+            padding: '6px 10px',
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            borderRadius: '0 10px 0 0'
+        },
+
+        '&:hover $mask': {
+            display: 'flex'
+        },
+
+        '& $mask': {
+            display: 'none',
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            width: '100%',
+            height: '100%',
+            justifyContent: 'center',
+            alignItems: 'center',
+            textAlign: 'center',
+        }
     },
     dropzone: {
         display: 'flex',
@@ -99,6 +133,22 @@ const Publish = () => {
                             <Typography variant='body2' color='textPrimary'>
                                 Clique ou arraste para adicionar uma imagem
                             </Typography>
+                        </Box>
+                        <Box
+                            className={classes.thumb}
+                            style={{ backgroundImage: 'url(https://source.unsplash.com/random)'}}
+                        >
+                            <Box className={classes.mainImage}>
+                                <Typography variant='body2' color='secondary'>
+                                    Principal
+                                </Typography>
+                            </Box>
+                            <Box className={classes.mask}>
+                                <IconButton color='secondary'>
+                                    <DeleteForever fontSize='large' />
+                                </IconButton>
+
+                            </Box>
                         </Box>
                     </Box>
                 </Box>
