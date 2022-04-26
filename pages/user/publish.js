@@ -26,7 +26,8 @@ const useStyles = makeStyles((theme) => ({
       },
     box: {
         backgroundColor: theme.palette.background.white,
-        padding: theme.spacing(3)
+        padding: theme.spacing(3),
+        borderRadius: '5px'
     },
     thumbsContainer: {
         display: 'flex',
@@ -97,6 +98,11 @@ const Publish = () => {
         ])
         }
     })
+
+    const handleRemoveFile = fileName => {
+        const  newFileSate = files.filter(file => file.name !== fileName)
+        setFiles(newFileSate)
+    }
 
     return (
         <TemplateDefault>
@@ -174,8 +180,8 @@ const Publish = () => {
                                         : null
                                 }
                                 <Box className={classes.mask}>
-                                    <IconButton color='secondary'>
-                                        <DeleteForever fontSize='large' />
+                                    <IconButton color='secondary' onClick={() => handleRemoveFile(file.name)}>
+                                        <DeleteForever fontSize='medium' />
                                     </IconButton>
 
                                 </Box>
